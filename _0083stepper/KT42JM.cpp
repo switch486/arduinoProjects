@@ -38,8 +38,15 @@ KT42JM::~KT42JM(){
 }
 
 void KT42JM::begin(int no){
-  expander.begin(0x38 + no);
+  expander.begin(no);
+  initOutput();
   resetState();
+}
+
+void KT42JM::initOutput() {
+  for (int i=0; i<STEPPER_MOTOR_STATES ; i++) {
+    expander.pinMode(i, OUTPUT);
+  }
 }
 
 void KT42JM::setHoldSignalMilis(int timeInMilis) {
@@ -72,6 +79,9 @@ void KT42JM::stepC() {
   incrementStateIterator();
 }
 
+/**
+ * cclockwise
+ */
 void KT42JM::stepCC() {
   stepp();
   decrementStateIterator();
@@ -91,5 +101,8 @@ void KT42JM::incrementStateIterator() {
 
 void KT42JM::decrementStateIterator() {
   stateIterator--;
+  if (stateIterator <0) {
+   stateIterator += STEPPER_MOTOR_STATES; 
+  }
   stateIterator %=STEPPER_MOTOR_STATES;
 }

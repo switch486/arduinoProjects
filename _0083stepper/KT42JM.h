@@ -30,7 +30,7 @@ public:
 	void stepC ();
         void stepCC ();
 private:
-	void init ();	
+	void initOutput ();	
         void stepp ();
 };
  
