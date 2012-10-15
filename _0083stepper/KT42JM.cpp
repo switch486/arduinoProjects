@@ -75,16 +75,16 @@ void KT42JM::setState (int stateToBeResetted) {
  * clockwise
  */
 void KT42JM::stepC() {
-  stepp();
   incrementStateIterator();
+  stepp();
 }
 
 /**
  * cclockwise
  */
 void KT42JM::stepCC() {
-  stepp();
   decrementStateIterator();
+  stepp();
 }
 
 void KT42JM::stepp() {

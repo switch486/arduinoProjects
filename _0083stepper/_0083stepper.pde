@@ -14,36 +14,23 @@ KT42JM stepperX;
 void setup()
 { 
   stepperX.begin(0x38);
-  stepperX.setHoldSignalMilis(1000);
+  stepperX.setHoldSignalMilis(40);
   
 //  Serial.begin(9600);
 //  Serial.println("Hello world");
 //  delay(1000);// Give reader a chance to see the output.
-//  stepperX.stepC();
-//  stepperX.stepC();
-//  stepperX.stepC();
-//  stepperX.stepC();
-//  stepperX.stepC();
-//  stepperX.stepC();
-//  stepperX.stepC();
-//  stepperX.stepC();
 }
 
 void loop()
 {
-  stepperX.stepC();
-//  stepperX.stepC();
-//  stepperX.stepC();
-//  stepperX.stepC();
-//  stepperX.stepC();
-//  stepperX.stepC();
-//  delay(1500);
-//  
-//  stepperX.stepCC();
-//  stepperX.stepCC();
-//  stepperX.stepCC();
-//  stepperX.stepCC();
-//  delay(1500);
+  for (int i=0; i<600; i++) {
+    stepperX.stepC();
+  }
+  delay(500);
+  
+  for (int i=0; i<300; i++) {
+    stepperX.stepCC();
+  }
         
   
 }
